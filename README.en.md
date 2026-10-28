@@ -235,8 +235,7 @@ This repository publishes only the distilled skills, indexes and rule quick-refe
 All numeric criteria in the book (the tolerance of "near" in channel work, record-volume multiples, correction-classification boundaries, the 7% turnover figure and so on) are case-based and empirical generalizations; the original provides no statistical backtesting, and many thresholds are not given in the book at all. Test them on your own instrument and declare the convention you use. Nothing in this repository constitutes investment advice.
 
 
-This project is released under the MIT license, which permits free use, modification and redistribution, including commercial use. If you intend to use it in a commercial product or a paid service, please contact the author first to describe your use case — this is the author's request, not an additional condition on top of the MIT license.
-
 ## License
 
-[MIT](https://opensource.org/licenses/MIT)
+[MIT](./LICENSE)
+
