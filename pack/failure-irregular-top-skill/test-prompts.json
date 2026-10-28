@@ -1,0 +1,13 @@
+{
+  "skill": "failure-irregular-top-skill",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "T2-B3",
+      "type": "output_case",
+      "capability": "failure-irregular-top-skill",
+      "input": "OT=187.31后再创新高190.38",
+      "expected": "异常顶态判定：190.38=浪B，真顶OT，浪C指向先前第五大浪起点"
+    }
+  ]
+}

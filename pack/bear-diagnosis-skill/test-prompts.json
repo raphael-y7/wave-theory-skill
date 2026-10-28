@@ -1,0 +1,20 @@
+{
+  "skill": "bear-diagnosis-skill",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "T2-A6",
+      "type": "should_trigger",
+      "capability": "bear-diagnosis-skill",
+      "prompt": "大盘从高点跌了一年了，现在到熊市哪个阶段了？什么时候能抄底？",
+      "expected_behavior": "调用 bear-diagnosis-skill"
+    },
+    {
+      "id": "T2-B4",
+      "type": "output_case",
+      "capability": "bear-diagnosis-skill",
+      "input": "六段熊市序列特征",
+      "expected": "熊市诊断报告：六段逐段对照+建仓点确认"
+    }
+  ]
+}

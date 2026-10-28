@@ -1,0 +1,27 @@
+{
+  "skill": "recursive-hold-skill",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "T1-A4",
+      "type": "should_trigger",
+      "capability": "recursive-hold-skill",
+      "prompt": "我拿了一只票两年涨了很多，按大浪级建的仓，现在该不该卖？",
+      "expected_behavior": "调用 recursive-hold-skill"
+    },
+    {
+      "id": "T1-B3",
+      "type": "output_case",
+      "capability": "recursive-hold-skill",
+      "input": "大浪级建仓，当前中浪3之小浪3",
+      "expected": "持有/卖出触发条件表：逐级下钻链+三证清单"
+    },
+    {
+      "id": "T2-A5",
+      "type": "should_trigger",
+      "capability": "recursive-hold-skill",
+      "prompt": "指数涨了两年多，第五浪好像在加速放量，我该全部清仓吗？",
+      "expected_behavior": "调用 recursive-hold-skill（wave-five-end-skill 衔接亦可）"
+    }
+  ]
+}

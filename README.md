@@ -129,6 +129,29 @@ wave-theory-skill/
 ├── BOOK_OVERVIEW.md               ← 整书理解（Adler 四步拆解，阶段 0 产出）
 ├── verified.md                    ← 15 个规范单元的三重验证结论
 ├── INDEX.md                       ← skill 地图：能力总表 + 依赖关系 + 加载顺序
+├── TEST_SUMMARY.md                ← 阶段 4 压力测试摘要：用例统计 + 结构检查 + 结果口径
+├── CANGJIE_ADAPTATION.md          ← 仓颉适配说明：文本状态 / 蒸馏目标 / 证据规则 / 使用边界
+├── candidates/                    ← 阶段 1 候选单元（五路并行提取，446 条原始候选，未经筛选）
+│   ├── frameworks.md
+│   ├── frameworks-part1.md
+│   ├── frameworks-part2.md
+│   ├── frameworks-part3.md
+│   ├── principles.md
+│   ├── principles-part1.md
+│   ├── principles-part2.md
+│   ├── principles-part3.md
+│   ├── cases.md
+│   ├── cases-part1.md
+│   ├── cases-part2.md
+│   ├── cases-part3.md
+│   ├── counter-examples.md
+│   ├── counter-examples-part1.md
+│   ├── counter-examples-part2.md
+│   ├── counter-examples-part3.md
+│   ├── glossary.md
+│   ├── glossary-part1.md
+│   ├── glossary-part2.md
+│   └── glossary-part3.md
 ├── bundle/                        ← 蒸馏中间产物（可审计）
 │   ├── verified.yaml              ← 15 个能力单元的完整规格（本仓库的单一事实来源）
 │   ├── cards/
@@ -154,6 +177,7 @@ wave-theory-skill/
 │   └── wave-theory-skill/
 │       ├── SKILL.md               ← 入口：触发条件 + 路由表 + 加载规则
 │       ├── BUILD_MANIFEST.json    ← 编译清单与文件哈希
+│       ├── test-prompts.json      ← 41 条触发 / 诱饵 / 边界 / 执行用例（与 evals/ 同一份副本）
 │       └── references/
 │           ├── overview.md        ← 整书概览
 │           ├── capability-index.md  ← 完整意图与关键词索引
@@ -215,6 +239,7 @@ wave-theory-skill/
 │   │   └── SKILL.md
 │   └── applicability-gate-skill/
 │       └── SKILL.md
+├── （注）← 各 skill 目录均含 test-prompts.json（该能力的触发与边界用例）
 └── evals/                          ← 生成过程的测试材料
     ├── test-prompts.json           ← 41 条触发 / 诱饵 / 边界 / 执行用例
     └── test-results.md             ← 逐项评分结果

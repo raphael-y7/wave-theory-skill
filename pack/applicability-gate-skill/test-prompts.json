@@ -1,0 +1,27 @@
+{
+  "skill": "applicability-gate-skill",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "T3-A4",
+      "type": "should_trigger",
+      "capability": "applicability-gate-skill",
+      "prompt": "我想用波浪理论数小盘股5分钟微浪，精确预测明天几点见顶",
+      "expected_behavior": "调用 applicability-gate-skill，拒绝精确预测"
+    },
+    {
+      "id": "T3-B4",
+      "type": "output_case",
+      "capability": "applicability-gate-skill",
+      "input": "小盘股5分钟微浪精确预测",
+      "expected": "三层闸门核对+拒绝精确预测+降级跟随建议"
+    },
+    {
+      "id": "T3-C1",
+      "type": "edge_case",
+      "capability": "applicability-gate-skill",
+      "prompt": "僵尸股（成交极低）数浪",
+      "expected_behavior": "五条件不满足→拒绝施用"
+    }
+  ]
+}

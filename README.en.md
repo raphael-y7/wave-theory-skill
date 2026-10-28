@@ -129,6 +129,29 @@ wave-theory-skill/
 ├── BOOK_OVERVIEW.md               ← whole-book comprehension (Adler four-step, stage 0 output)
 ├── verified.md                    ← triple-verification conclusions for the 15 canonical units
 ├── INDEX.md                       ← skill map: capability table + dependencies + loading order
+├── TEST_SUMMARY.md                ← stage 4 stress-test summary: case counts + structure checks + how results are recorded
+├── CANGJIE_ADAPTATION.md          ← Cangjie adaptation notes: text state / distillation goals / evidence rules / usage boundaries
+├── candidates/                    ← stage 1 candidate units (five parallel extractors, 446 raw candidates, unfiltered)
+│   ├── frameworks.md
+│   ├── frameworks-part1.md
+│   ├── frameworks-part2.md
+│   ├── frameworks-part3.md
+│   ├── principles.md
+│   ├── principles-part1.md
+│   ├── principles-part2.md
+│   ├── principles-part3.md
+│   ├── cases.md
+│   ├── cases-part1.md
+│   ├── cases-part2.md
+│   ├── cases-part3.md
+│   ├── counter-examples.md
+│   ├── counter-examples-part1.md
+│   ├── counter-examples-part2.md
+│   ├── counter-examples-part3.md
+│   ├── glossary.md
+│   ├── glossary-part1.md
+│   ├── glossary-part2.md
+│   └── glossary-part3.md
 ├── bundle/                        ← distillation intermediates (auditable)
 │   ├── verified.yaml              ← full specification of the 15 capability units (single source of truth)
 │   ├── cards/
@@ -154,6 +177,7 @@ wave-theory-skill/
 │   └── wave-theory-skill/
 │       ├── SKILL.md               ← entry: triggers + routing table + loading rules
 │       ├── BUILD_MANIFEST.json    ← build manifest and file hashes
+│       ├── test-prompts.json      ← 41 trigger / decoy / edge / execution cases (same copy as evals/)
 │       └── references/
 │           ├── overview.md        ← whole-book overview
 │           ├── capability-index.md  ← full intent and keyword index
@@ -215,6 +239,7 @@ wave-theory-skill/
 │   │   └── SKILL.md
 │   └── applicability-gate-skill/
 │       └── SKILL.md
+├── (note) ← every skill directory also ships a test-prompts.json (trigger and boundary cases)
 └── evals/                          ← test material from the generation process
     ├── test-prompts.json           ← 41 trigger / decoy / boundary / execution cases
     └── test-results.md             ← item-by-item scoring log

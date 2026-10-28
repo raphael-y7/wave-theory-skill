@@ -1,0 +1,20 @@
+{
+  "skill": "wave-labeling-skill",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "T1-A7",
+      "type": "should_trigger",
+      "capability": "wave-labeling-skill",
+      "prompt": "我要给一段日线走势标注波浪，怎么确定每浪是哪一级别？",
+      "expected_behavior": "调用 wave-labeling-skill"
+    },
+    {
+      "id": "T1-B2",
+      "type": "output_case",
+      "capability": "wave-labeling-skill",
+      "input": "100→112→103→124→111→139→125→158（中浪级）",
+      "expected": "数浪标注表：倾斜规则检验+九级符号+子浪分解"
+    }
+  ]
+}

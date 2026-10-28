@@ -1,0 +1,34 @@
+{
+  "skill": "correction-classifier-skill",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "T1-A3",
+      "type": "should_trigger",
+      "capability": "correction-classifier-skill",
+      "prompt": "这只股票现在是不是在调整浪里？属于哪种调整？",
+      "expected_behavior": "调用 correction-classifier-skill"
+    },
+    {
+      "id": "T1-B4",
+      "type": "output_case",
+      "capability": "correction-classifier-skill",
+      "input": "顶100，A=90，B=98，C=89.5",
+      "expected": "判平台形，强度=强势，附容差与实证单例警示"
+    },
+    {
+      "id": "T1-C2",
+      "type": "edge_case",
+      "capability": "correction-classifier-skill",
+      "prompt": "调整浪B反弹超过调整起点创新高",
+      "expected_behavior": "判停：C未走完不终判，条件式转为不规则形(1)"
+    },
+    {
+      "id": "T2-A4",
+      "type": "should_trigger",
+      "capability": "correction-classifier-skill",
+      "prompt": "这次回调是之字形还是平台形？后面还能涨吗？",
+      "expected_behavior": "调用 correction-classifier-skill"
+    }
+  ]
+}

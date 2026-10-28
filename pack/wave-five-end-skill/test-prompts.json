@@ -1,0 +1,27 @@
+{
+  "skill": "wave-five-end-skill",
+  "version": "0.1.0",
+  "test_cases": [
+    {
+      "id": "T1-A1",
+      "type": "should_trigger",
+      "capability": "wave-five-end-skill",
+      "prompt": "我持仓的股票涨了一大波，浪2浪3浪4都走完了，现在怎么判断浪5什么时候结束、该不该卖？",
+      "expected_behavior": "调用 wave-five-end-skill（衔接 recursive-hold-skill 亦可）"
+    },
+    {
+      "id": "T1-B1",
+      "type": "output_case",
+      "capability": "wave-five-end-skill",
+      "input": "M=100,N=110,O=104,P=118,Q=105",
+      "expected": "三步通道判定记录，浪3强弱判读，最终通道与浪5预期终点区，浪4/浪1重叠疑点须被声明"
+    },
+    {
+      "id": "T1-C1",
+      "type": "edge_case",
+      "capability": "wave-five-end-skill",
+      "prompt": "只有浪1浪2数据，浪3未走完，要求预测浪5终点价位",
+      "expected_behavior": "按输入契约只交付初始通道与定性预期，拒绝精确价位"
+    }
+  ]
+}
