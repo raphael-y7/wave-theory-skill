@@ -223,12 +223,10 @@ $dest = "$env:USERPROFILE\.agents\skills"
 
 Ask "wave 4 is done — draw the channel and give me the wave-5 terminus and the exit zone", and see whether the agent goes straight into the three-step channel construction and the evidence bundle, instead of handing you a generic "watch your risk and position sizing". With single installed it reads the entry first and then routes to a card; with pack installed, `wave-five-end-skill` is matched directly by its description.
 
-## Source
+## Sources
 
-- *The Wave Principle (Professional Annotated Edition)* by Ralph Nelson Elliott (US), translated by Duan Huiqing, annotated by Zhang Yibo; original edition 1938, Chinese edition published by Posts & Telecom Press (Century Classics of Stock Investing series)
-- The whole book yields 15 capability cards
-- The original sample is US equities from 1854 to 1938, concentrated in the Dow Jones Industrial Average of 1921–1938; there is not a single A-share case. Migrating to A-shares requires re-calibrating degree correspondence, volume conventions and the T+1 rule yourself
-- Annotator material (Zhang Yibo's views inside the `commentary-playbook` card and the passages marked 【点评】 in other cards) is not Elliott's original text; each item is tagged with its source level inside the card
+- *The Wave Principle* by Ralph Nelson Elliott
+- Distilled from the whole book, producing 15 capability cards
 
 ## Disclaimer
 
