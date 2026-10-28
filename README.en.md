@@ -122,9 +122,10 @@ The hard part of distilling this book is keeping "what the author claims" separa
 This repository ships the test material from the generation process: `evals/test-prompts.json` is the fixed case set, and `evals/test-results.md` is the item-by-item grading record — method, per-category pass counts and spot checks on execution quality, not a single line saying "all passed".
 
 - **Blind-test method**: 3 independent sub-agents (T1/T2/T3, none involved in distillation) answered holding only the routing table and the relevant capability card; the main process graded against pre-set expectations
-- **Case composition**: 39 fixed cases = 22 trigger/routing + 6 decoys + 8 edge cases + 15 live executions
-- **Results**: should_trigger 22 / 22, should_not_trigger 6 / 6 (zero false activations), edge_case 8 / 8, output_case 15 / 15
-- **Failures and rework**: none. No expected answer was edited, and no case was dropped from the denominator
+- **Actual case count in the case file**: `evals/test-prompts.json` holds 41 cases = 13 trigger + 7 decoy + 6 edge + 15 live execution
+- **Per-category pass counts as recorded in the grading file** (quoted from `evals/test-results.md`): should_trigger 22 / 22, should_not_trigger 6 / 6 (zero false activations), edge_case 8 / 8, output_case 15 / 15
+- **The counting discrepancy is stated as it is**: the grading record itself claims 39 total cases, while its four category counts add up to 51, and the case file shipped here holds 41. That is a difference in counting conventions in the source material; this repository has not reconciled, rewritten or inferred any pass rate from it
+- **Failures and rework**: recorded as none. No expected answer was edited, and no case was dropped from the denominator
 - **Quality spot checks**: one blind tester proactively found that the test data's "wave-4 low of 105 below the wave-1 peak of 110" violates the overlap rule, and declared the counting doubt in the deliverable instead of forcing the procedure; for an invalid count the tester gave a "reject" verdict alongside alternative options rather than a single answer
 
 ## Repository structure
