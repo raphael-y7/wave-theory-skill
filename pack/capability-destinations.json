@@ -23,15 +23,15 @@
     },
     "cap.elliott-wave.extension-reversal": {
       "served_by": "wave-theory-skill-router",
-      "card": "wave-theory-skill-router/references/capabilities/extension-reversal-skill.md"
+      "card": "wave-theory-skill-router/references/capabilities/extension-reversal.md"
     },
     "cap.elliott-wave.volume-adjudication": {
       "served_by": "wave-theory-skill-router",
-      "card": "wave-theory-skill-router/references/capabilities/volume-adjudication-skill.md"
+      "card": "wave-theory-skill-router/references/capabilities/volume-adjudication.md"
     },
     "cap.elliott-wave.triangle-alternation": {
       "served_by": "wave-theory-skill-router",
-      "card": "wave-theory-skill-router/references/capabilities/triangle-alternation-skill.md"
+      "card": "wave-theory-skill-router/references/capabilities/triangle-alternation.md"
     },
     "cap.elliott-wave.failure-irregular-top-skill": {
       "promoted_to": "failure-irregular-top-skill",
@@ -43,19 +43,19 @@
     },
     "cap.elliott-wave.multi-timeframe": {
       "served_by": "wave-theory-skill-router",
-      "card": "wave-theory-skill-router/references/capabilities/multi-timeframe-skill.md"
+      "card": "wave-theory-skill-router/references/capabilities/multi-timeframe.md"
     },
     "cap.elliott-wave.chart-rules-20": {
       "served_by": "wave-theory-skill-router",
-      "card": "wave-theory-skill-router/references/capabilities/chart-rules-20-skill.md"
+      "card": "wave-theory-skill-router/references/capabilities/chart-rules-20.md"
     },
     "cap.elliott-wave.cross-market-sync": {
       "served_by": "wave-theory-skill-router",
-      "card": "wave-theory-skill-router/references/capabilities/cross-market-sync-skill.md"
+      "card": "wave-theory-skill-router/references/capabilities/cross-market-sync.md"
     },
     "cap.elliott-wave.non-price-series": {
       "served_by": "wave-theory-skill-router",
-      "card": "wave-theory-skill-router/references/capabilities/non-price-series-skill.md"
+      "card": "wave-theory-skill-router/references/capabilities/non-price-series.md"
     },
     "cap.elliott-wave.applicability-gate-skill": {
       "promoted_to": "applicability-gate-skill",
@@ -63,7 +63,7 @@
     },
     "cap.elliott-wave.commentary-playbook": {
       "served_by": "wave-theory-skill-router",
-      "card": "wave-theory-skill-router/references/capabilities/commentary-playbook-skill.md"
+      "card": "wave-theory-skill-router/references/capabilities/commentary-playbook.md"
     }
   }
 }

@@ -1,0 +1,885 @@
+schema_version: 1
+bundle_id: bundle.wave-theory-skill
+book:
+  title: 波浪理论（专业解读版） The Wave Principle
+  author: '[美] 拉尔夫·纳尔逊·艾略特（Ralph Nelson Elliott）著；段会青 译；张艺博 点评'
+  source_pack: books/wave-theory-skill/transcription/波浪理论-转写稿.md
+  baseline_tag: cangjie-v2.5-RIA-TV++
+entry:
+  name: wave-theory-skill
+  description: 艾略特波浪理论（1938 原著专业解读版）蒸馏的股票波浪分析技能：九级浪级标注与数浪、通道法三步预测第五浪终点与平仓区、调整浪四分类与强度预警、延长浪两次反转、三角形与交替规则、量能裁决、熊市阶段诊断与长线建仓点、递归持有卖出规则。适用于
+    A 股/美股等趋势行情的技术分析辅助；不适用于基本面估值、盘整市细节数浪与精确点位算法。
+  core_principles:
+  - 五浪推进+三浪调整的分形嵌套是一切判定的坐标系（九级浪级标注）
+  - 通道作图法把'何时平仓'变成可执行的几何规程（浪2后画通道，浪4后锁定浪5终点）
+  - 形态走完才有预警价值：右侧确认、跟随趋势，放弃左侧精准预测（作者与点评者共同警示）
+  - 成交量与多周期是浪性判别与防骗的第二证据链（1/3/5放量、2/4缩量；周线对数/日线算术）
+  - 每条规则自带例外条款：先过适用域闸门（五条件、趋势行情），再下判定
+  out_of_scope:
+  - 基本面估值与财报分析
+  - 止损与仓位管理规程（原书未提供，需用户自备风控）
+  - 波浪幅度/点位的精确算法（原书无公式；点评者斐波那契参数未经核实）
+  - 盘整/无趋势行情的细节数浪（原书明确限定趋势市）
+  - 1938 年美股特有制度指标（NYSE 席位价格等）的直接套用
+  stop_conditions:
+  - 数浪出现多个自洽矛盾方案且无法用通道/量能/周期裁决时，停止下结论并如实呈现分歧
+  - 标的或行情不满足形态完备五条件、或处于盘整市时，拒绝输出浪级判定
+  - 缺少必要输入（周期数据、成交量、图表类型）时先询问，不得静默猜值
+router_entry:
+  name: wave-theory-skill-router
+  description: 艾略特波浪理论能力卡来源入口（pack 路由）：7 个高频高危能力已晋级为独立 Skill（wave-five-end-skill/wave-labeling-skill/recursive-hold-skill/correction-classifier-skill/failure-irregular-top-skill/bear-diagnosis-skill/applicability-gate-skill），其余 8 张能力卡（延长浪两次反转/量能裁决/三角形与交替/多周期图法/图法20条总纲/跨市场同步/非价格序列/点评者心法）按意图路由；整书概览、术语与速查也经本入口访问。
+promotion_budget: 8
+capabilities:
+- capability_id: cap.elliott-wave.wave-five-end-skill
+  revision: 1
+  status: active
+  slug: wave-five-end-skill
+  title: 第五浪终点定位与终结判定（通道法三步+三联证）
+  importance: critical
+  importance_rationale: 映射 task-01/02/05——"浪5结束的位置决定投资者何时平仓、盈利多少"，是全书最高价值流程与平仓决策核心。
+  one_liner: 浪4走完后连浪2、浪4终点画基准线、过浪3顶点作平行上通道线，浪5止于该线附近即为平仓区；破上通道线+同级天量为终结确认，未破线且回落为走软预警。
+  intents:
+  - 定位第五浪终点
+  - 预测浪5目标位
+  - 判断何时清仓
+  - 画通道锁定整轮运动
+  keywords:
+  - 第五浪终点
+  - 浪5目标
+  - 通道法
+  - 上通道线
+  - 基准线
+  - 最终通道
+  - 破上通道线
+  - 天量
+  - wave 5 target
+  - channel method
+  - exit point
+  also_read:
+  - cap.elliott-wave.recursive-hold-skill
+  - cap.elliott-wave.failure-irregular-top-skill
+  - cap.elliott-wave.volume-adjudication
+  - cap.elliott-wave.multi-timeframe
+  - cap.elliott-wave.wave-labeling-skill
+  card: cards/wave-five-end-skill.md
+  frontmatter:
+    description: '用于一轮上涨中预测第五浪终点与平仓时点：浪2走完画初始通道、浪3后强制重绘、浪4后画最终通道（连浪2浪4终点为基准线、过浪3顶点作平行上通道线），浪5通常止于上通道线附近；破线+成交量明显放大（高级别用对数图）为终结确认，未破线且回落为走软预警。适用情境："浪5目标位在哪/何时清仓/帮我把这轮行情的终点框出来/wave
+      5 target/exit"。不适用于：无趋势整理市、拐点无法确认时强行作图、把通道落点当精确卖点；浪5细分出五子浪（延长）或未创新高（失败浪）时转用对应卡。关键trigger：第五浪、浪5终点、通道法、上通道线、平仓时点、破线天量。
+
+      '
+    tags:
+    - decision
+    - trading
+    - elliott-wave
+    - channel-method
+    - exit-timing
+  source_evidence:
+  - source_id: src-wave-principle-1938
+    location: 第三章（图7-11）；第五章（图17-19）；第四章；第八章规则5-6
+  promotion:
+    destination: promoted
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: pack 重评晋级：『浪5终点在哪/何时清仓』是用户不提书名也高频独立提出的任务；三步通道法+破线天量双证的输入、步骤、输出与完成标准自足，单卡可正确执行；跨标的反复复用，正/负/近邻断言明确（阶段4 触发22/22、执行15/15）。
+- capability_id: cap.elliott-wave.wave-labeling-skill
+  revision: 1
+  status: active
+  slug: wave-labeling-skill
+  title: 波浪计数与九级浪级标注规范
+  importance: critical
+  importance_rationale: 映射 task-03/04——全书一切通道、终点、建仓判定都在浪级坐标系上进行，数浪是所有下游能力的前置条件。
+  one_liner: 先定主方向再数五浪（奇数拆五、偶数拆三、a-b-c 递归），用倾斜规则检验计数，按九级专名与表 1 符号逐级标注，单一标的独立计数。
+  intents:
+  - 数浪并判定当前浪位
+  - 标注九级浪级符号
+  - 分解驱动浪与调整浪子浪
+  - 验证候选波浪计数有效性
+  keywords:
+  - 数浪
+  - 浪型计数
+  - 当前浪位
+  - 浪级
+  - 九级浪级
+  - 表1符号
+  - 驱动浪
+  - 调整浪
+  - 子浪分解
+  - a-b-c
+  - 倾斜规则
+  - wave count
+  - wave degree
+  - subwave
+  also_read:
+  - cap.elliott-wave.wave-five-end-skill
+  - cap.elliott-wave.applicability-gate-skill
+  - cap.elliott-wave.recursive-hold-skill
+  card: cards/wave-labeling-skill.md
+  frontmatter:
+    description: '用于在任意走势图上建立波浪坐标系：确认主方向后数出五浪（1/3/5 驱动、2/4 调整），奇数浪拆 5 子浪、偶数浪拆 3 子浪、调整内部 a-b-c（a/c 再拆五、b
+      拆三）逐级递归；用倾斜规则检验（浪3高于浪1、浪5高于浪3、浪4低点不达浪2水平且不与浪1高点重叠），再按九级专名（次微浪→特大超级循环浪）与表 1 符号标注，单一标的独立计数、无需第二指数验证。适用："帮我数浪/这是第几浪/浪级怎么标/count
+      waves/what wave are we in"。不适用：无趋势整理市、预测点位（终点预测转 wave-five-end-skill、卖出判定转 recursive-hold-skill、调整形态分类转 correction-classifier-skill）。关键trigger：数浪、浪位、浪级、计数有效性、wave
+      labeling。
+
+      '
+    tags:
+    - analysis
+    - elliott-wave
+    - wave-counting
+    - notation
+    - framework
+  source_evidence:
+  - source_id: src-wave-principle-1938
+    location: 第一章末尾；第二章（图1-2）；第三章（图3-6）；第四章（表1）
+  promotion:
+    destination: promoted
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: pack 重评晋级：『帮我数浪/这是第几浪』独立高频意图；倾斜规则、九级专名与表1符号全部在卡内，不加载兄弟卡即可执行；一切通道/终点/建仓判定的坐标系，复用频率最高。
+- capability_id: cap.elliott-wave.recursive-hold-skill
+  revision: 1
+  status: active
+  slug: recursive-hold-skill
+  title: 六条递归持有卖出规则
+  importance: critical
+  importance_rationale: 映射 task-11——全书唯一成体系的进出场规则，输出持仓分级卖出触发条件表，是持有者的核心操作规程。
+  one_liner: 已建仓者按"本级第四浪未走完/第五浪未耗尽不卖"逐级下钻核对至最内层第五浪，以"最内层第五浪耗尽+破上通道线（对数图）+同级天量"三证齐备处卖出。
+  intents:
+  - 制定持仓卖出计划
+  - 判断现在该不该卖
+  - 持有中确认第五浪是否耗尽
+  - 避免提前下车
+  keywords:
+  - 递归持有
+  - 卖出规则
+  - 不到第五浪不卖
+  - 逐级下钻
+  - 第五中浪
+  - 第五小浪
+  - 第五细浪
+  - 破上通道线
+  - 同级天量
+  - selling rules
+  - hold until fifth wave
+  - volume climax
+  also_read:
+  - cap.elliott-wave.wave-five-end-skill
+  - cap.elliott-wave.bear-diagnosis-skill
+  card: cards/recursive-hold-skill.md
+  frontmatter:
+    description: '用于已建仓持有者的卖出判定：只要本级第五浪未走完，其内部必还有一整套更小级别五浪，故逐级下钻（中浪→小浪→细浪→微浪→次微浪，60分钟图）核对，每一级"第五浪走完前不卖"；数到最内层后以"破上通道线（高级别须对数图验证）+同级天量（大于此前同级任何一浪）"双证确认终点后卖出。适用："该不该卖/什么时候卖/帮我定持有计划/holding
+      plan/when to sell"。不适用：未建仓者的买入决策（转 bear-diagnosis-skill）、浪5终点点位预测（转 wave-five-end-skill）、浪5出现延长浪（转 extension-reversal）或未创新高（转
+      failure-irregular-top-skill）。注意：原书无止损规程、天量无量化阈值。关键trigger：递归持有、卖出规则、第五浪耗尽、破线天量。
+
+      '
+    tags:
+    - decision
+    - trading
+    - elliott-wave
+    - exit-strategy
+    - holding-discipline
+  source_evidence:
+  - source_id: src-wave-principle-1938
+    location: 第八章（规则1-6及开篇）；第五章（图16）
+  promotion:
+    destination: promoted
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: pack 重评晋级：『该不该卖/帮我定持有计划』是最常见独立持仓意图；逐级下钻核对+三证齐备卖出的规程与完成标准自足；持有期反复调用，与 wave-five-end-skill 近邻边界已在阶段4验证。
+- capability_id: cap.elliott-wave.correction-classifier-skill
+  revision: 1
+  status: active
+  slug: correction-classifier-skill
+  title: 调整浪四分类判别与强度预警
+  importance: high
+  importance_rationale: 映射 task-06——建仓时点判断的核心判别卡，把调整浪升格为可分类、可读出后市强度的预测结构。
+  one_liner: 调整走完后按"浪B相对调整起点、浪C相对浪A低点"两个几何读数归入之字形/平台形/不规则形四类，再折算后市强度（之字=一般、平台=强势、终点高于a=超级强势；熊市镜像反向）。
+  intents:
+  - 判断调整浪属于哪类形态
+  - 用调整形态预估后市强度
+  - 评估熊市反弹质量
+  - 等调整走完确认后再建仓
+  keywords:
+  - 调整浪分类
+  - 之字形
+  - 平台形
+  - 不规则形
+  - a-b-c判型
+  - 强度预警
+  - 超级强势
+  - 超级弱势
+  - 熊市镜像
+  - correction type
+  - zigzag
+  - flat
+  - irregular
+  - strength forecast
+  also_read:
+  - cap.elliott-wave.triangle-alternation
+  - cap.elliott-wave.recursive-hold-skill
+  - cap.elliott-wave.wave-labeling-skill
+  card: cards/correction-classifier-skill.md
+  frontmatter:
+    description: '用于对已走完（或接近走完）的三浪调整 A-B-C 做形态归类与后市强度预警：读浪B相对调整起点、浪C相对浪A低点两个位置——B明显低于起点且C创新低=之字形（后市一般）；B回到起点且C与A持平=平台形（后市较长强劲波动）；B越过起点创新高且C破A=不规则形(1)；B不创新高且C不破A=不规则形(2)（调整浅而缓）。熊市向上反弹按同几何镜像评估（B失守起点且C乏力=超级弱势）。适用："这段回调是什么形态/B浪创新高/平台形是不是预示强势/what
+      type of correction"。不适用：形态未走完时抢跑判型、三角形专查（转triangle-alternation）、延长浪两次反转推演（转extension-reversal）。关键trigger：调整浪四分类、之字/平台/不规则、强度预警。
+
+      '
+    tags:
+    - analysis
+    - elliott-wave
+    - correction-patterns
+    - strength-forecast
+    - decision-support
+  source_evidence:
+  - source_id: src-wave-principle-1938
+    location: 第五章（调整浪节图20-29；强势调整浪节图35-41）
+  promotion:
+    destination: promoted
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: pack 重评晋级：『这段回调是什么形态/预示后市强弱』独立可询；浪B/浪C两读数→四分类→强度折算的契约自足；建仓时点核心判别，每次调整行情都会调用。
+- capability_id: cap.elliott-wave.extension-reversal
+  revision: 1
+  status: active
+  slug: extension-reversal
+  title: 延长浪识别与两次反转推演
+  importance: high
+  importance_rationale: 映射 task-07——1929 式顶部风险识别程序，延长浪恰逢第五大浪走完时的不规则 A-B-C 杀跌推演是书中唯一的系统性风险路径推演。
+  one_liner: 驱动浪内细分出五个小浪即延长浪（一轮至多一个、最常浪5），它永非终点——其后先以三浪回延长浪起点（第一次反转），再顺大势且通常超延长幅度（第二次反转）；恰逢第五大浪走完则构成不规则A-B-C，浪C杀跌至前轮第五大浪起点附近。
+  intents:
+  - 识别延长浪
+  - 推演延长浪后的两次反转路径
+  - 判断顶后新高是不是B浪
+  - 熊市向下延长时的持仓处置
+  keywords:
+  - 延长浪
+  - 延长浪中的延长浪
+  - 两次反转
+  - 双重反转
+  - 第一次反转
+  - 第二次反转
+  - 延长浪起点
+  - 不规则顶
+  - 浪C杀跌
+  - 向下延长
+  - extension
+  - double reversal
+  also_read:
+  - cap.elliott-wave.volume-adjudication
+  - cap.elliott-wave.failure-irregular-top-skill
+  card: cards/extension-reversal-skill.md
+  frontmatter:
+    description: '用于识别延长浪（被细分出五个小浪的驱动浪，浪1/3/5皆可、最常浪5、一轮至多一个）并按八规律推演其后路径：延长浪永非终点，其后两次反转——第一次立即以三浪回落到延长浪起点水平，第二次顺大方向且通常超过延长浪幅度；若恰逢第五大浪走完，两次反转构成不规则调整的浪A/浪B（最高价顶在B），随后向下五浪浪C快速杀跌至前轮第五大浪起点附近。熊市向下延长规律照用，持多头者不应立刻卖出（先有三浪回调再试低点）。适用："这段是延长浪吗/延长浪后怎么走/顶后创新高是不是B浪/down
+      extension套牢怎么办"。不适用：一般浪5终点定位（转wave-five-end-skill）、调整形态分类（转correction-classifier-skill）；禁止用"永非终点"豁免止损（原书无幅度算法、预测影响作者自认未确定）。关键trigger：延长浪、两次反转、双重反转、B浪超前顶。
+
+      '
+    tags:
+    - analysis
+    - trading
+    - elliott-wave
+    - extension
+    - reversal-forecast
+    - risk-path
+  source_evidence:
+  - source_id: src-wave-principle-1938
+    location: 第五章（延长浪节图30-31；延长浪后的市场表现节规律(1)-(8)、图15、图32、表2）
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: 五判据均通过但预算让位：与 failure-irregular-top-skill 在『顶后创新高是不是B浪/双重反转』近邻同题，二者同时晋级必然双触发；按触发可分性与保命价值排序让位给 failure-irregular-top-skill。本卡留路由入口，经 wave-labeling-skill/volume-adjudication/failure-irregular-top-skill 组合可达，不淘汰。
+- capability_id: cap.elliott-wave.volume-adjudication
+  revision: 1
+  status: active
+  slug: volume-adjudication
+  title: 量能验证与形态歧义裁决
+  importance: high
+  importance_rationale: 对应task-08（用成交量裁决形态歧义）——歧义走势的实操裁决程序，是终点判定与浪标核查的第二证据链
+  one_liner: 量随浪序绑定（1/3/5放量、2/4与调整浪全程缩量）；"?"歧义处缩量判不规则B、放量判延长浪；浪5后量稳价微涨即反转预警；市场异常疲弱时量能证据降权
+  intents:
+  - 用成交量核对浪形计数
+  - 裁决延长浪与不规则B的歧义
+  - 判断第五浪终结的量价信号
+  - 用换手率做长期牛熊定位
+  keywords:
+  - 成交量
+  - volume
+  - 换手率
+  - turnover rate
+  - 量价背离
+  - 放量滞涨
+  - 缩量
+  - 不规则B浪
+  - 延长浪歧义
+  - 量能裁决
+  also_read:
+  - cap.elliott-wave.extension-reversal
+  - cap.elliott-wave.wave-five-end-skill
+  - cap.elliott-wave.multi-timeframe
+  card: cards/volume-adjudication-skill.md
+  frontmatter:
+    description: '用成交量验证浪形并裁决形态歧义时使用：浪1/3/5放量、浪2/4与调整浪全程缩量的量序核对；浪5后创新高
+
+      处"?"位置歧义（缩量=不规则调整浪B、放量=延长浪正在形成）；浪5后量稳价微涨=反转预警；换手率等量能
+
+      序列的长期循环定位（volume confirmation, extension vs irregular B）。不适用于：周期与坐标尺度选择（用
+
+      multi-timeframe）、市场异常清淡时强判（量信号可信度下降、60分钟图具欺骗性）、把"换手率7%警觉"等点评
+
+      经验当原文规则。trigger词：成交量/缩量/放量/换手率/volume/滞涨/量价背离/新高是B浪吗。
+
+      '
+    tags:
+    - volume
+    - verification
+    - disambiguation
+    - technical-analysis
+  source_evidence:
+  - source_id: src-wave-principle-1938
+    location: 第五章图43；第六章成交量节、图53-54
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: 五判据均通过但预算让位：7 个晋级席已被更高频、更前置的意图占满；其触发词（放量/缩量/量价背离/换手率）与通用技术分析高度重叠，独立 Skill 化对非波浪量能问题的误触发风险最大。留路由入口作为终点判定与浪标核查的第二证据链。
+- capability_id: cap.elliott-wave.triangle-alternation
+  revision: 1
+  status: active
+  slug: triangle-alternation
+  title: 三角形判别与交替规则
+  importance: medium
+  importance_rationale: 对应task-09（三角形完整判别）——判别价值真实，但点评者提示其突破收益有限，重要性次于驱动/调整主流判别
+  one_liner: 三角形必含五浪且须嵌于行情浪位；楔形只作浪5；结束后沿浪2方向运行（楔形终点变向返回底部）；"画满"即近顶点、突破边线非必要条件；浪2/浪4调整形态互斥交替
+  intents:
+  - 判别三角形整理形态
+  - 预推浪4调整形态
+  - 判断三角形结束后的方向
+  - 检查楔形浪位
+  keywords:
+  - 三角形
+  - triangle
+  - 楔形
+  - wedge
+  - 交替规则
+  - alternation
+  - 浪4形态
+  - 顶点
+  - apex
+  - 收敛整理
+  also_read:
+  - cap.elliott-wave.correction-classifier-skill
+  - cap.elliott-wave.wave-labeling-skill
+  card: cards/triangle-alternation-skill.md
+  frontmatter:
+    description: '疑似三角形/收敛整理的判别与出口研判用：五浪资格审查（不足五浪忽略）、水平/楔形亚型分类、楔形仅作
+
+      浪5的位置约束、浪1/浪2定位与"结束后沿浪2方向运行"的方向预告、"画满"即近顶点（突破边线非必要条件）、
+
+      中浪第五浪成三角形=反转预备，以及浪2/浪4形态互斥的交替规则预推（triangle, wedge, alternation, apex）。
+
+      不适用于：之字/平台/不规则调整的整体分类（用correction-classifier-skill）、周期与坐标尺度选择（用
+
+      multi-timeframe）、不足五浪的收敛盘整（忽略）。trigger词：三角形/楔形/收敛/交替/浪4形态/apex。
+
+      '
+    tags:
+    - pattern
+    - triangle
+    - alternation
+    - technical-analysis
+  source_evidence:
+  - source_id: src-wave-principle-1938
+    location: 第五章三角形调整浪节，图44-51
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: false
+      independent_eval: true
+    notes: independent_reuse=false：点评者明示三角形突破收益有限，仅盘整末期低频调用，跨场景复用预期低；预算让位于高频高危意图。经路由入口 correction-classifier-skill 组合可达。
+- capability_id: cap.elliott-wave.failure-irregular-top-skill
+  revision: 1
+  status: active
+  slug: failure-irregular-top-skill
+  title: 失败浪与不规则顶应对
+  importance: high
+  importance_rationale: 对应task-01/12——1929式顶部风险的识别与应对程序，"最高价顶≠真顶"是全书最反直觉且保命价值最高的判定之一
+  one_liner: 顶后回落再反弹越过正统顶（OT）创新高=不规则顶，最高价只是浪B、真顶在OT，浪C五浪杀跌指向先前第五大浪起点附近；第五浪未创新高即失败浪，B为真顶，B点附近立即清仓
+  intents:
+  - 判别不规则顶与B浪超前顶
+  - 判别失败浪并清仓
+  - 区分真顶与最高价顶
+  - 推演浪C杀跌目标
+  keywords:
+  - 不规则顶
+  - irregular top
+  - 失败浪
+  - failure
+  - truncated fifth
+  - B浪
+  - 正统顶
+  - orthodox top
+  - 浪C
+  - 双重顶
+  also_read:
+  - cap.elliott-wave.extension-reversal
+  - cap.elliott-wave.bear-diagnosis-skill
+  - cap.elliott-wave.wave-five-end-skill
+  card: cards/failure-irregular-top-skill.md
+  frontmatter:
+    description: '第五浪终点后出现"异常顶"时使用：顶后回落低点=浪A，反弹越过正统顶（OT）创新高=不规则顶确立，最高价
+
+      顶只是浪B、真顶在OT，随后浪C五浪快速杀跌（目标≈先前第五大浪起点附近）；或第五浪无力创新高（失败浪，
+
+      3升5降八浪），B为真顶，应立即清仓。trigger词：新高是B浪吗/真顶/双重顶/未创新高/truncated fifth/
+
+      irregular top。不适用于：常规第五浪终点判定（用wave-five-end-skill）、"?"位置量能歧义未裁决时（先走
+
+      volume-adjudication）、熊市全程阶段定位与建仓点（用bear-diagnosis-skill）。注意原书样本极少且系事后标注。
+
+      '
+    tags:
+    - top-identification
+    - reversal
+    - risk
+    - technical-analysis
+  source_evidence:
+  - source_id: src-wave-principle-1938
+    location: 第五章不规则调整浪节（图15、33、34、41、42）、延长浪规律(5)；第七章第15条；第九章图64-65
+  promotion:
+    destination: promoted
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: pack 重评晋级：『新高是不是B浪/真顶还是假顶/双重顶』是独立且高危的意图；正统顶/浪B/浪C几何+『B点附近立即清仓』规程自足；最高价顶≠真顶是全书最反直觉、保命价值最高的判定，在近邻竞争中按触发可分性胜过 extension-reversal。
+- capability_id: cap.elliott-wave.bear-diagnosis-skill
+  revision: 1
+  status: active
+  slug: bear-diagnosis-skill
+  title: 熊市阶段诊断与长线建仓点确认
+  importance: critical
+  importance_rationale: 对应task-12（识别熊市阶段并定位长线建仓点）——点评者称"存活的终极必杀技"，是全书最完整的实盘复盘程序与唯一成体系的建仓确认
+  one_liner: 按六段序列定位熊市（OT-B不规则顶→五浪含延长→之字→三角形→追加浪/补充循环浪→自低点首轮五浪上升）；确认信号出现前一切低点只是候选底；自候选低点的首轮五浪上升且为更大级别浪1，即确认长线建仓点
+  intents:
+  - 定位熊市所处阶段
+  - 判断三浪调整后能否抄底
+  - 确认长线建仓点
+  - 决策熊市防守姿态
+  keywords:
+  - 熊市
+  - bear market
+  - 长线建仓点
+  - 底部确认
+  - 补充循环浪
+  - 追加浪
+  - 半月形
+  - 不规则顶
+  - wave C
+  - bottom confirmation
+  also_read:
+  - cap.elliott-wave.failure-irregular-top-skill
+  - cap.elliott-wave.recursive-hold-skill
+  - cap.elliott-wave.correction-classifier-skill
+  card: cards/bear-diagnosis-skill.md
+  frontmatter:
+    description: '大级别第五浪后的下跌段做全程阶段定位与建仓点确认时使用：六段序列（OT后B越过正统顶=不规则顶→五浪
+
+      含延长→之字→三角形→追加浪/半月形/补充循环浪→自低点首轮五浪上升）逐段定位推演；建仓点=调整浪终点，
+
+      确认信号=自候选低点走出一轮五浪上升且为更大级别浪1。trigger词：熊市阶段/见底了吗/建仓点/补充循环浪/
+
+      bear market stage/bottom confirmation。不适用于：单轮运动终点（用wave-five-end-skill）、单个调整形态分类
+
+      （用correction-classifier-skill）、三浪走完即抄底。样本仅1937-38一次熊市，浪标系事后标注。
+
+      '
+    tags:
+    - bear-market
+    - entry-point
+    - diagnosis
+    - technical-analysis
+  source_evidence:
+  - source_id: src-wave-principle-1938
+    location: 第八章开篇；第九章图62-68（半月形节、补充循环浪节）；第六章统计表
+  promotion:
+    destination: promoted
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: pack 重评晋级：『熊市走到哪个阶段了/能否抄底』独立意图明确；六段序列定位+『自候选低点首轮五浪上升确认建仓』的契约自足；全书唯一成体系的建仓确认，长线场景反复复用。
+- capability_id: cap.elliott-wave.multi-timeframe
+  revision: 1
+  status: active
+  slug: multi-timeframe
+  title: 多周期研判与图表尺度规则
+  importance: medium
+  importance_rationale: 对应task-13（多周期与图表尺度配合）——防止形态被周期掩盖（1904年例）的看图配置规则，是其他判定卡的显形前提
+  one_liner: 快市用60分钟+日线、慢市升周线；周线对数图（放大2-3倍）、日线/60分钟算术图；高级别顶部验突破用算术图、底部用对数图；日线疑点一律用周线排除；同级别浪固定同图
+  intents:
+  - 选择看图的周期组合
+  - 选择对数或算术坐标
+  - 日线看不清时升级周期
+  - 多周期结论冲突时仲裁
+  keywords:
+  - 多周期
+  - timeframe
+  - 对数图
+  - log scale
+  - 算术图
+  - arithmetic
+  - 周线
+  - weekly chart
+  - 60分钟图
+  - 图表尺度
+  also_read:
+  - cap.elliott-wave.wave-five-end-skill
+  - cap.elliott-wave.chart-rules-20
+  card: cards/multi-timeframe-skill.md
+  frontmatter:
+    description: '需要决定"用哪个周期、哪种坐标看图"时使用：速度-周期匹配（快市60分钟+日线、慢市日线+周线、永远多
+
+      周期）、坐标尺度分工（周线对数、日线/60分钟算术；大浪以上顶部验突破用算术图、底部用对数图）、周线
+
+      三用途（定浪级/显出被压扁的平台形或三角形/排除日线欺骗性）。trigger词：用哪个周期/对数还是算术/
+
+      日线太乱/时间框架/timeframe/log scale。不适用于：量能裁决浪性与歧义（用volume-adjudication）、
+
+      三角形判别（用triangle-alternation）、浪级标注规范（用wave-labeling-skill）。参数为1938年美股口径。
+
+      '
+    tags:
+    - charting
+    - timeframe
+    - scale
+    - technical-analysis
+  source_evidence:
+  - source_id: src-wave-principle-1938
+    location: 第五章图19；第六章速度节（图52）；第七章第9-13条
+  promotion:
+    destination: router
+    gate:
+      independent_intent: false
+      independent_contract: true
+      independent_run: true
+      independent_reuse: false
+      independent_eval: true
+    notes: independent_intent=false：用户单提『用哪个周期/对数还是算术』时通常要通用图表建议，而非艾略特专用口径（且参数系 1938 年美股，需本土化）；作为其余判定卡的显形前提留路由被按需引用。
+- capability_id: cap.elliott-wave.chart-rules-20
+  revision: 1
+  status: active
+  slug: chart-rules-20
+  title: 波浪图20条总纲清单
+  importance: medium
+  importance_rationale: 对应task-10读图自查，是各专项卡的入口分流器与速查清单；单独决策价值有限，但缺它则多卡协作无总纲（点评者要求"熟记于心"）
+  one_liner: 读图先过20条四组自查（同步/通道/制图/数据），对浪数"感觉混淆不清"就停止给结论先重画
+  intents:
+  - 读图自查
+  - 数浪总纲核对
+  - 波浪分析流程入口
+  - 图法20条速查
+  keywords:
+  - 图法20条
+  - 20条图法
+  - 读图清单
+  - chart checklist
+  - 波浪作图
+  - 通道线
+  - channel
+  - 周线图
+  - 浪级混淆
+  - wave degree
+  also_read:
+  - cap.elliott-wave.multi-timeframe
+  - cap.elliott-wave.applicability-gate-skill
+  card: cards/chart-rules-20-skill.md
+  frontmatter:
+    description: '用户要求对波浪图做系统性自查、索取读图清单/总纲（"20条图法""读图要点""chart checklist"），
+
+      或在数浪、画通道拿不准时需要速查提醒，或不确定该用哪张专项卡需要入口分流时使用。
+
+      提供20条图法的四组速查（同步规律/通道工具/制图纪律/数据判别）与判停点：对浪数"感觉混淆
+
+      不清"即停止给结论先重画。不用于：单项技术细节（走 wave-five-end-skill / multi-timeframe /
+
+      cross-market-sync / non-price-series）、适用性判断（走 applicability-gate-skill）、点评者经验
+
+      （走 commentary-playbook）。
+
+      '
+    tags:
+    - checklist
+    - charting
+    - elliott-wave
+    - technical-analysis
+  source_evidence:
+  - source_id: src-wave-principle-1938
+    location: 第七章（20条图法总结，第1-20条）
+  promotion:
+    destination: router
+    gate:
+      independent_intent: false
+      independent_contract: true
+      independent_run: true
+      independent_reuse: false
+      independent_eval: true
+    notes: independent_intent=false：20条图法是书内总纲清单，脱离本书语境无人单独索要；其定位就是路由入口内部分流器与速查，晋级将与路由入口功能重复。
+- capability_id: cap.elliott-wave.cross-market-sync
+  revision: 1
+  status: active
+  slug: cross-market-sync
+  title: 跨市场同步监测
+  importance: medium
+  importance_rationale: 对应task-15；同步=大事预警是书中少数可检验信号，用于校准浪级定位与重大底确认，但属旁证而非独立交易信号
+  one_liner: 同类市场顶部错落、底部几乎同步（底部共振=重大底确认），无关序列突然同步=大事预警，同步事件触发浪级定位复核
+  intents:
+  - 跨市场同步监测
+  - 见顶筑底台账
+  - 底部共振确认
+  - 个股大盘领先滞后
+  keywords:
+  - 同步
+  - 共振
+  - synchrony
+  - 底部同步
+  - 顶部各异
+  - 台账
+  - cross-market
+  - 联动
+  - 突然同步
+  - 表3
+  also_read:
+  - cap.elliott-wave.non-price-series
+  - cap.elliott-wave.bear-diagnosis-skill
+  card: cards/cross-market-sync-skill.md
+  frontmatter:
+    description: '用户要监测多个指数/板块/市场/序列之间是否同步，或观察到"一起见底/同时见顶"想知道含义，
+
+      或要建见顶筑底时间台账、用同步性校准浪级定位时使用。核心规则：同类市场顶部错落、底部
+
+      几乎同步（底部共振=重大底确认）；本不相关的序列突然同步=大事预警；个股以大盘波浪模式
+
+      为背景参照。不用于：单个非价格序列的波浪化改造（走 non-price-series）、20条总纲自查
+
+      （走 chart-rules-20）；比较跨类事物时不得套用"底部必同步"（口径不同）。
+
+      '
+    tags:
+    - monitoring
+    - synchrony
+    - elliott-wave
+    - cross-market
+  source_evidence:
+  - source_id: src-wave-principle-1938
+    location: 第七章第1/19/20条；第三章；第十章表3与图79
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: false
+      independent_eval: true
+    notes: independent_reuse=false：同步性属旁证而非独立交易信号，书中仅表3单一样本（1938 口径），跨场景复用预期低；留路由与 bear-diagnosis-skill/non-price-series 互链。
+- capability_id: cap.elliott-wave.non-price-series
+  revision: 1
+  status: active
+  slug: non-price-series
+  title: 非价格序列波浪化三招
+  importance: medium
+  importance_rationale: 对应task-14迁移任务；提供逆指标/替代序列/去季节化三条数据改造路径，是波浪法扩展到非价格数据的唯一成套程序，但普适性主张未经检验故定medium
+  one_liner: 非价格数据先过数据关——无数据用逆指标、噪声大用替代序列、有季节性用十年基线去季节化，三招都不可行就停止
+  intents:
+  - 非价格数据波浪化
+  - 替代指标数浪
+  - 去季节化作图
+  - 循环定义严格化
+  keywords:
+  - 非价格序列
+  - non-price series
+  - 替代指标
+  - proxy
+  - 逆指标
+  - 去季节化
+  - seasonal
+  - 成交量数浪
+  - 席位价格
+  - 波浪迁移
+  also_read:
+  - cap.elliott-wave.cross-market-sync
+  card: cards/non-price-series-skill.md
+  frontmatter:
+    description: '用户想把波浪分析迁移到非价格数据（成交量/换手率/产量/货运量/产值等），或数据有季节性
+
+      扰动，或某领域没有可靠价格数据，或想把"周期"切分严格化时使用。三招：逆指标法（无基础
+
+      数据）、替代序列法（小浪级噪声大）、去季节化十年基线法（季节性）；三招都无合适指标即
+
+      停止，不得强行数浪。不用于：多序列时间同步监测（走 cross-market-sync）、"该不该用波浪
+
+      理论"的五条件闸门（走 applicability-gate-skill）、量能-浪序绑定规则（走 volume-adjudication）。
+
+      '
+    tags:
+    - data-transformation
+    - non-price-series
+    - elliott-wave
+    - seasonality
+  source_evidence:
+  - source_id: src-wave-principle-1938
+    location: 第七章第16-18条；第十章开篇与图69-78
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: false
+      independent_eval: true
+    notes: independent_reuse=false：迁移任务且普适性主张未经检验（原书自认样本有限），证据强度低；留路由防止过度承诺，经 cross-market-sync/applicability-gate-skill 组合可达。
+- capability_id: cap.elliott-wave.applicability-gate-skill
+  revision: 1
+  status: active
+  slug: applicability-gate-skill
+  title: 波浪理论适用域闸门与使用姿态
+  importance: high
+  importance_rationale: task-01~16的前置闸门；防误用收益最高——决定波浪分析是否启动与以什么期望启动，所有专项卡都应以本卡为先，错用场景（震荡市数浪、精准预测）损失最大
+  one_liner: 用波浪理论前先过三层闸门——五条件核对对象、只对趋势行情、只做宏观判定的右侧跟随，放弃精准预测
+  intents:
+  - 判断波浪理论适用性
+  - 波浪分析前置检查
+  - 使用姿态设定
+  - 震荡市要不要数浪
+  keywords:
+  - 适用性
+  - 五条件
+  - applicability
+  - five conditions
+  - 适用域
+  - 右侧判定
+  - 不预测只跟随
+  - 盘整市
+  - 精准预测
+  - 使用姿态
+  also_read:
+  - cap.elliott-wave.commentary-playbook
+  - cap.elliott-wave.wave-labeling-skill
+  card: cards/applicability-gate-skill.md
+  frontmatter:
+    description: '用户问"波浪理论适不适用于某市场/品种/数据"，或即将开始数浪需要前置检查，或期待精准
+
+      预测点位与时间，或面对盘整震荡市想数浪时——先用本卡过闸门。三层检查：五条件（对象层）
+
+      →有无趋势（行情层，整理市不用，点评者主张）→使用姿态（只做宏观趋势判定+右侧确认，
+
+      放弃精准预测）。所有专项卡都不管适用性判断，且都应以本卡为前置。不用于：任何具体技术
+
+      细节的展开（数浪/通道/卖出/形态/量能各走专项卡）。
+
+      '
+    tags:
+    - applicability
+    - gate
+    - elliott-wave
+    - decision
+  source_evidence:
+  - source_id: src-wave-principle-1938
+    location: 第一章（五条件与自认限度）；第三章·专家解读【点评】；推荐序【点评】
+  promotion:
+    destination: promoted
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: pack 重评晋级：『波浪理论适不适用于这个标的/震荡市要不要数浪』是独立元意图；五条件→趋势→使用姿态三层闸门契约自足；pack 模式下 7 个独立入口放大了直入误用面，本卡作为第一站前置拦截错用场景（防误用收益最高，错用损失最大）。
+- capability_id: cap.elliott-wave.commentary-playbook
+  revision: 1
+  status: active
+  slug: commentary-playbook
+  title: 点评者实战心法（张艺博，非艾略特原文）
+  importance: low
+  importance_rationale: task-16及操作辅助；点评者经验不承载艾略特原文规则，价值在操作辅助，主要风险是被误当原文引用，故定low并强制证据等级标注
+  one_liner: 点评者（张艺博）的实战经验合集——右侧确认、只做三浪三、弃弱留强、缩量介入，每条必须标注证据等级且声明非艾略特原文
+  intents:
+  - 点评者实战心法
+  - 浪位操作建议
+  - 整理期选股筛选
+  - 量价介入时机
+  keywords:
+  - 张艺博
+  - 点评者
+  - 专家解读
+  - 只做三浪三
+  - 弃弱留强
+  - 放量滞涨
+  - 换手率7%
+  - 缩量整理
+  - 突破介入
+  - 右侧确认
+  also_read:
+  - cap.elliott-wave.applicability-gate-skill
+  - cap.elliott-wave.volume-adjudication
+  card: cards/commentary-playbook-skill.md
+  frontmatter:
+    description: '用户点名"张艺博/点评者/专家解读"，或要操作性实战建议（只做三浪三、弃弱留强、突破介入、
+
+      放量滞涨、浪位操作映射、整理期选股精力分配），或在A股语境执行原书规则需本土化辅助时
+
+      使用。全卡内容均为现代点评者主张，非艾略特原文，部分为无出处经验值（7%阈值、三角形
+
+      突破力道统计、最低量比值等），每条强制标注证据等级。不用于：艾略特原文规则口径（走
+
+      wave-labeling-skill / wave-five-end-skill / recursive-hold-skill / correction-classifier-skill / volume-adjudication
+
+      等专项卡）、适用性判断（走 applicability-gate-skill）。
+
+      '
+    tags:
+    - commentary
+    - tactics
+    - a-share
+    - elliott-wave
+  source_evidence:
+  - source_id: src-wave-principle-1938
+    location: 推荐序及第一至九章"专家解读"【点评】引用块（张艺博）
+  promotion:
+    destination: router
+    gate:
+      independent_intent: true
+      independent_contract: true
+      independent_run: true
+      independent_reuse: true
+      independent_eval: true
+    notes: 五判据均通过但预算让位+风险控制：全卡为点评者（张艺博）经验而非艾略特原文，部分为无出处经验值；晋级成独立 Skill 会显著放大被误当原文引用的风险。留路由入口可强制『非原文+证据等级标注』先于使用。
