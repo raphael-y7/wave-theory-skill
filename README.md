@@ -112,10 +112,10 @@ pack 里被晋级为独立 skill 的 7 张卡：
 
 ## 测试与验证
 
-本仓库连生成过程的测试材料一起发布：`evals/test-prompts.json` 是用例定义，`evals/test-results.md` 是逐项评分结果。
+本仓库连生成过程的测试材料一起发布：触发与输出用例见各 skill 目录下的 `test-prompts.json`（`single/wave-theory-skill/` 与 `pack/` 下 8 个 skill 目录各一份），逐项评分记录见仓库根目录的 `test-results.md`。
 
 - **方法**：3 个独立 sub-agent 做盲测，只持路由表与对应能力卡作答，不见预期答案；主流程对照预期判卷
-- **用例共 41 条**：should_trigger 13 条（该触发的要触发、要路由到对的卡）、should_not_trigger 7 条（诱饵题：KDJ、市盈率 ROE、MACD、荐股、斐波那契、英超夺冠等，全部应沉默）、edge_case 6 条（浪 3 未走完却要求精确价位、C 浪未走完、清淡市量能、僵尸股等）、output_case 15 条（每张卡一条，要求产出完整交付物）
+- **用例共 41 条**（9 个 `test-prompts.json` 去重后；累加为 100 条，因 `pack/` 各 skill 复用同一批用例）：should_trigger 13 条（该触发的要触发、要路由到对的卡）、should_not_trigger 7 条（诱饵题：KDJ、市盈率 ROE、MACD、荐股、斐波那契、英超夺冠等，全部应沉默）、edge_case 6 条（浪 3 未走完却要求精确价位、C 浪未走完、清淡市量能、僵尸股等）、output_case 15 条（每张卡一条，要求产出完整交付物）
 - **结果**：触发、诱饵、边界、执行四类全部通过，零失败、无回炉，也没有用例从分母里排除
 - **抽查到的行为**：盲测者主动发现测试数据里"浪 4 终点低于浪 1 顶"违反重叠规则并声明计数疑点，而不是硬套流程；对不合格计数给出判废与备选方案对照，而不是单一答案；点评经验逐条标注证据等级并声明非艾略特原文
 
@@ -123,126 +123,31 @@ pack 里被晋级为独立 skill 的 7 张卡：
 
 ```text
 wave-theory-skill/
-├── README.md                      ← 你正在看的
-├── README.en.md                   ← English version
-├── LICENSE                        ← MIT
-├── BOOK_OVERVIEW.md               ← 整书理解（Adler 四步拆解，阶段 0 产出）
-├── verified.md                    ← 15 个规范单元的三重验证结论
-├── INDEX.md                       ← skill 地图：能力总表 + 依赖关系 + 加载顺序
-├── TEST_SUMMARY.md                ← 阶段 4 压力测试摘要：用例统计 + 结构检查 + 结果口径
-├── CANGJIE_ADAPTATION.md          ← 仓颉适配说明：文本状态 / 蒸馏目标 / 证据规则 / 使用边界
-├── candidates/                    ← 阶段 1 候选单元（五路并行提取，446 条原始候选，未经筛选）
-│   ├── frameworks.md
-│   ├── frameworks-part1.md
-│   ├── frameworks-part2.md
-│   ├── frameworks-part3.md
-│   ├── principles.md
-│   ├── principles-part1.md
-│   ├── principles-part2.md
-│   ├── principles-part3.md
-│   ├── cases.md
-│   ├── cases-part1.md
-│   ├── cases-part2.md
-│   ├── cases-part3.md
-│   ├── counter-examples.md
-│   ├── counter-examples-part1.md
-│   ├── counter-examples-part2.md
-│   ├── counter-examples-part3.md
-│   ├── glossary.md
-│   ├── glossary-part1.md
-│   ├── glossary-part2.md
-│   └── glossary-part3.md
-├── bundle/                        ← 蒸馏中间产物（可审计）
-│   ├── verified.yaml              ← 15 个能力单元的完整规格（本仓库的单一事实来源）
-│   ├── cards/
-│   │   ├── applicability-gate-skill.md
-│   │   ├── bear-diagnosis-skill.md
-│   │   ├── chart-rules-20-skill.md
-│   │   ├── commentary-playbook-skill.md
-│   │   ├── correction-classifier-skill.md
-│   │   ├── cross-market-sync-skill.md
-│   │   ├── extension-reversal-skill.md
-│   │   ├── failure-irregular-top-skill.md
-│   │   ├── multi-timeframe-skill.md
-│   │   ├── non-price-series-skill.md
-│   │   ├── recursive-hold-skill.md
-│   │   ├── triangle-alternation-skill.md
-│   │   ├── volume-adjudication-skill.md
-│   │   ├── wave-five-end-skill.md
-│   │   └── wave-labeling-skill.md
-│   └── book/
-│       ├── overview.md            ← 整书概览
-│       └── glossary.md            ← 术语表
-├── single/                        ← 单一入口模式
-│   └── wave-theory-skill/
-│       ├── SKILL.md               ← 入口：触发条件 + 路由表 + 加载规则
-│       ├── BUILD_MANIFEST.json    ← 编译清单与文件哈希
-│       ├── test-prompts.json      ← 41 条触发 / 诱饵 / 边界 / 执行用例（与 evals/ 同一份副本）
-│       └── references/
-│           ├── overview.md        ← 整书概览
-│           ├── capability-index.md  ← 完整意图与关键词索引
-│           ├── cheatsheet.md      ← 决策规则速查
-│           ├── glossary.md        ← 术语表
-│           └── capabilities/
-│               ├── applicability-gate-skill.md
-│               ├── bear-diagnosis-skill.md
-│               ├── chart-rules-20.md
-│               ├── commentary-playbook.md
-│               ├── correction-classifier-skill.md
-│               ├── cross-market-sync.md
-│               ├── extension-reversal.md
-│               ├── failure-irregular-top-skill.md
-│               ├── multi-timeframe.md
-│               ├── non-price-series.md
-│               ├── recursive-hold-skill.md
-│               ├── triangle-alternation.md
-│               ├── volume-adjudication.md
-│               ├── wave-five-end-skill.md
-│               └── wave-labeling-skill.md
-├── pack/                          ← 多入口模式（compact pack）
-│   ├── BUILD_MANIFEST.json
-│   ├── capability-destinations.json
-│   ├── wave-theory-skill-router/
-│   │   ├── SKILL.md               ← 来源路由入口
-│   │   └── references/
-│   │       ├── overview.md        ← 整书概览
-│   │       ├── capability-index.md  ← 完整意图与关键词索引
-│   │       ├── cheatsheet.md      ← 决策规则速查
-│   │       ├── glossary.md        ← 术语表
-│   │       └── capabilities/
-│   │           ├── applicability-gate-skill.md
-│   │           ├── bear-diagnosis-skill.md
-│   │           ├── chart-rules-20.md
-│   │           ├── commentary-playbook.md
-│   │           ├── correction-classifier-skill.md
-│   │           ├── cross-market-sync.md
-│   │           ├── extension-reversal.md
-│   │           ├── failure-irregular-top-skill.md
-│   │           ├── multi-timeframe.md
-│   │           ├── non-price-series.md
-│   │           ├── recursive-hold-skill.md
-│   │           ├── triangle-alternation.md
-│   │           ├── volume-adjudication.md
-│   │           ├── wave-five-end-skill.md
-│   │           └── wave-labeling-skill.md
-│   ├── wave-five-end-skill/
-│   │   └── SKILL.md
-│   ├── wave-labeling-skill/
-│   │   └── SKILL.md
-│   ├── recursive-hold-skill/
-│   │   └── SKILL.md
-│   ├── correction-classifier-skill/
-│   │   └── SKILL.md
-│   ├── failure-irregular-top-skill/
-│   │   └── SKILL.md
-│   ├── bear-diagnosis-skill/
-│   │   └── SKILL.md
-│   └── applicability-gate-skill/
-│       └── SKILL.md
-├── （注）← 各 skill 目录均含 test-prompts.json（该能力的触发与边界用例）
-└── evals/                          ← 生成过程的测试材料
-    ├── test-prompts.json           ← 41 条触发 / 诱饵 / 边界 / 执行用例
-    └── test-results.md             ← 逐项评分结果
+├── README.md              ← 你正在看的
+├── README.en.md           ← English version
+├── LICENSE                ← MIT
+├── BOOK_OVERVIEW.md       ← 阶段 0 产出：全书 Adler 分析
+├── INDEX.md               ← 阶段 3 产出：skill 总览 + 依赖关系
+├── verified.md            ← 通过三重验证的 290 个单元
+├── TEST_SUMMARY.md        ← 阶段 4 产出：压力测试摘要
+├── CANGJIE_ADAPTATION.md  ← 仓颉适配说明
+├── GITHUB_REPO.md         ← 仓库元数据
+├── test-results.md        ← 测试结果记录
+├── candidates/            ← 阶段 1 产出：原始候选池
+│   ├── frameworks.md      ← 框架与方法候选
+│   ├── principles.md      ← 原则 / 规则 / 计算候选
+│   ├── cases.md           ← 书中案例候选
+│   ├── counter-examples.md← 反例与边界候选
+│   └── glossary.md        ← 术语候选
+├── rejected/              ← 阶段 1.5 产出：被淘汰的单元 + 原因
+├── bundle/                ← 编译事实源
+│   ├── verified.yaml      ← 能力元数据、判据与去向
+│   ├── cards/             ← 能力卡源文件（六段结构）
+│   └── book/              ← overview.md + glossary.md
+├── single/                ← single 模式（1 个入口 + 全部能力卡）
+│   └── wave-theory-skill/SKILL.md  ← 入口：触发 + 路由表 + 加载规则
+└── pack/                  ← pack 模式（1 个路由入口 + 7 个晋级 skill）
+    └── */SKILL.md         ← 8 个 skill，每个附带 test-prompts.json
 ```
 
 ## 如何使用

@@ -112,10 +112,10 @@ This 1938 original carries a layer of modern commentary (marked "【点评】" i
 
 ## Testing and verification
 
-This repository publishes the test material from the generation process alongside the skills: `evals/test-prompts.json` holds the case definitions and `evals/test-results.md` the item-by-item scoring log.
+This repository publishes the test material from the generation process alongside the skills: the trigger and output cases live in the `test-prompts.json` of each skill directory (`single/wave-theory-skill/` plus the 8 skill directories under `pack/`), and the item-by-item scoring log is `test-results.md` at the repository root.
 
 - **Method**: three independent sub-agents ran the blind test, holding only the routing table and the matching capability card and never seeing the expected answers; the main process scored them against expectations
-- **41 cases in total**: 13 should_trigger (fire when they should, and route to the right card), 7 should_not_trigger (decoys such as KDJ, P/E and ROE, MACD, stock tips, Fibonacci, the Premier League title — all must stay silent), 6 edge_case (a precise wave-5 target demanded while wave 3 is incomplete, an unfinished wave C, thin-market volume, a zombie stock), and 15 output_case (one per card, each requiring a complete deliverable)
+- **41 cases in total** (after de-duplicating the 9 `test-prompts.json` files; the raw sum is 100 because the `pack/` skills reuse the same case set): 13 should_trigger (fire when they should, and route to the right card), 7 should_not_trigger (decoys such as KDJ, P/E and ROE, MACD, stock tips, Fibonacci, the Premier League title — all must stay silent), 6 edge_case (a precise wave-5 target demanded while wave 3 is incomplete, an unfinished wave C, thin-market volume, a zombie stock), and 15 output_case (one per card, each requiring a complete deliverable)
 - **Result**: all four categories passed — trigger, decoy, boundary and execution — with no failures, no rework, and no case removed from the denominator
 - **Behaviours observed**: the blind tester spotted that the test data violated the overlap rule (wave 4 ending below the wave 1 peak) and declared the counting doubt instead of forcing the procedure; for an invalid count it offered a reject option plus alternatives rather than a single answer; commentary heuristics were labeled by evidence level and marked as not Elliott's text
 
@@ -123,126 +123,31 @@ This repository publishes the test material from the generation process alongsid
 
 ```text
 wave-theory-skill/
-├── README.md                      ← Chinese version
-├── README.en.md                   ← you are reading this
-├── LICENSE                        ← MIT
-├── BOOK_OVERVIEW.md               ← whole-book comprehension (Adler four-step, stage 0 output)
-├── verified.md                    ← triple-verification conclusions for the 15 canonical units
-├── INDEX.md                       ← skill map: capability table + dependencies + loading order
-├── TEST_SUMMARY.md                ← stage 4 stress-test summary: case counts + structure checks + how results are recorded
-├── CANGJIE_ADAPTATION.md          ← Cangjie adaptation notes: text state / distillation goals / evidence rules / usage boundaries
-├── candidates/                    ← stage 1 candidate units (five parallel extractors, 446 raw candidates, unfiltered)
-│   ├── frameworks.md
-│   ├── frameworks-part1.md
-│   ├── frameworks-part2.md
-│   ├── frameworks-part3.md
-│   ├── principles.md
-│   ├── principles-part1.md
-│   ├── principles-part2.md
-│   ├── principles-part3.md
-│   ├── cases.md
-│   ├── cases-part1.md
-│   ├── cases-part2.md
-│   ├── cases-part3.md
-│   ├── counter-examples.md
-│   ├── counter-examples-part1.md
-│   ├── counter-examples-part2.md
-│   ├── counter-examples-part3.md
-│   ├── glossary.md
-│   ├── glossary-part1.md
-│   ├── glossary-part2.md
-│   └── glossary-part3.md
-├── bundle/                        ← distillation intermediates (auditable)
-│   ├── verified.yaml              ← full specification of the 15 capability units (single source of truth)
-│   ├── cards/
-│   │   ├── applicability-gate-skill.md
-│   │   ├── bear-diagnosis-skill.md
-│   │   ├── chart-rules-20-skill.md
-│   │   ├── commentary-playbook-skill.md
-│   │   ├── correction-classifier-skill.md
-│   │   ├── cross-market-sync-skill.md
-│   │   ├── extension-reversal-skill.md
-│   │   ├── failure-irregular-top-skill.md
-│   │   ├── multi-timeframe-skill.md
-│   │   ├── non-price-series-skill.md
-│   │   ├── recursive-hold-skill.md
-│   │   ├── triangle-alternation-skill.md
-│   │   ├── volume-adjudication-skill.md
-│   │   ├── wave-five-end-skill.md
-│   │   └── wave-labeling-skill.md
-│   └── book/
-│       ├── overview.md            ← whole-book overview
-│       └── glossary.md            ← glossary
-├── single/                        ← single-entry build
-│   └── wave-theory-skill/
-│       ├── SKILL.md               ← entry: triggers + routing table + loading rules
-│       ├── BUILD_MANIFEST.json    ← build manifest and file hashes
-│       ├── test-prompts.json      ← 41 trigger / decoy / edge / execution cases (same copy as evals/)
-│       └── references/
-│           ├── overview.md        ← whole-book overview
-│           ├── capability-index.md  ← full intent and keyword index
-│           ├── cheatsheet.md      ← decision-rule quick reference
-│           ├── glossary.md        ← glossary
-│           └── capabilities/
-│               ├── applicability-gate-skill.md
-│               ├── bear-diagnosis-skill.md
-│               ├── chart-rules-20.md
-│               ├── commentary-playbook.md
-│               ├── correction-classifier-skill.md
-│               ├── cross-market-sync.md
-│               ├── extension-reversal.md
-│               ├── failure-irregular-top-skill.md
-│               ├── multi-timeframe.md
-│               ├── non-price-series.md
-│               ├── recursive-hold-skill.md
-│               ├── triangle-alternation.md
-│               ├── volume-adjudication.md
-│               ├── wave-five-end-skill.md
-│               └── wave-labeling-skill.md
-├── pack/                          ← multi-entry build (compact pack)
-│   ├── BUILD_MANIFEST.json
-│   ├── capability-destinations.json
-│   ├── wave-theory-skill-router/
-│   │   ├── SKILL.md               ← source router entry
-│   │   └── references/
-│   │       ├── overview.md        ← whole-book overview
-│   │       ├── capability-index.md  ← full intent and keyword index
-│   │       ├── cheatsheet.md      ← decision-rule quick reference
-│   │       ├── glossary.md        ← glossary
-│   │       └── capabilities/
-│   │           ├── applicability-gate-skill.md
-│   │           ├── bear-diagnosis-skill.md
-│   │           ├── chart-rules-20.md
-│   │           ├── commentary-playbook.md
-│   │           ├── correction-classifier-skill.md
-│   │           ├── cross-market-sync.md
-│   │           ├── extension-reversal.md
-│   │           ├── failure-irregular-top-skill.md
-│   │           ├── multi-timeframe.md
-│   │           ├── non-price-series.md
-│   │           ├── recursive-hold-skill.md
-│   │           ├── triangle-alternation.md
-│   │           ├── volume-adjudication.md
-│   │           ├── wave-five-end-skill.md
-│   │           └── wave-labeling-skill.md
-│   ├── wave-five-end-skill/
-│   │   └── SKILL.md
-│   ├── wave-labeling-skill/
-│   │   └── SKILL.md
-│   ├── recursive-hold-skill/
-│   │   └── SKILL.md
-│   ├── correction-classifier-skill/
-│   │   └── SKILL.md
-│   ├── failure-irregular-top-skill/
-│   │   └── SKILL.md
-│   ├── bear-diagnosis-skill/
-│   │   └── SKILL.md
-│   └── applicability-gate-skill/
-│       └── SKILL.md
-├── (note) ← every skill directory also ships a test-prompts.json (trigger and boundary cases)
-└── evals/                          ← test material from the generation process
-    ├── test-prompts.json           ← 41 trigger / decoy / boundary / execution cases
-    └── test-results.md             ← item-by-item scoring log
+├── README.md              ← Chinese version
+├── README.en.md           ← you are reading this
+├── LICENSE                ← MIT
+├── BOOK_OVERVIEW.md       ← stage 0 output: Adler whole-book analysis
+├── INDEX.md               ← stage 3 output: skill map + dependencies
+├── verified.md            ← the 290 units that passed triple verification
+├── TEST_SUMMARY.md        ← stage 4 output: stress-test summary
+├── CANGJIE_ADAPTATION.md  ← cangjie adaptation notes
+├── GITHUB_REPO.md         ← repository metadata
+├── test-results.md        ← test result records
+├── candidates/            ← stage 1 output: raw candidate pool
+│   ├── frameworks.md      ← framework and method candidates
+│   ├── principles.md      ← principle / rule / calculation candidates
+│   ├── cases.md           ← case candidates from the book
+│   ├── counter-examples.md← counter-example and boundary candidates
+│   └── glossary.md        ← terminology candidates
+├── rejected/              ← stage 1.5 output: rejected units + reasons
+├── bundle/                ← compilation source of truth
+│   ├── verified.yaml      ← capability metadata, criteria and destinations
+│   ├── cards/             ← capability card sources (six sections)
+│   └── book/              ← overview.md + glossary.md
+├── single/                ← single-mode build (one entry + all capability cards)
+│   └── wave-theory-skill/SKILL.md  ← entry: triggers + routing table + loading rules
+└── pack/                  ← pack-mode build (one router + 7 promoted skills)
+    └── */SKILL.md         ← 8 skills, each shipping a test-prompts.json
 ```
 
 ## Usage
