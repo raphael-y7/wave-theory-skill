@@ -1,0 +1,69 @@
+{
+  "generated_by": "cangjie-tools v2.5.0",
+  "bundle_id": "bundle.wave-theory-skill",
+  "router_entrypoint": "wave-theory-skill-router",
+  "entrypoint_count": 8,
+  "capability_count": 15,
+  "destinations": {
+    "cap.elliott-wave.wave-five-end-skill": {
+      "promoted_to": "wave-five-end-skill",
+      "router_view": "wave-theory-skill-router/references/capabilities/wave-five-end-skill.md"
+    },
+    "cap.elliott-wave.wave-labeling-skill": {
+      "promoted_to": "wave-labeling-skill",
+      "router_view": "wave-theory-skill-router/references/capabilities/wave-labeling-skill.md"
+    },
+    "cap.elliott-wave.recursive-hold-skill": {
+      "promoted_to": "recursive-hold-skill",
+      "router_view": "wave-theory-skill-router/references/capabilities/recursive-hold-skill.md"
+    },
+    "cap.elliott-wave.correction-classifier-skill": {
+      "promoted_to": "correction-classifier-skill",
+      "router_view": "wave-theory-skill-router/references/capabilities/correction-classifier-skill.md"
+    },
+    "cap.elliott-wave.extension-reversal": {
+      "served_by": "wave-theory-skill-router",
+      "card": "wave-theory-skill-router/references/capabilities/extension-reversal-skill.md"
+    },
+    "cap.elliott-wave.volume-adjudication": {
+      "served_by": "wave-theory-skill-router",
+      "card": "wave-theory-skill-router/references/capabilities/volume-adjudication-skill.md"
+    },
+    "cap.elliott-wave.triangle-alternation": {
+      "served_by": "wave-theory-skill-router",
+      "card": "wave-theory-skill-router/references/capabilities/triangle-alternation-skill.md"
+    },
+    "cap.elliott-wave.failure-irregular-top-skill": {
+      "promoted_to": "failure-irregular-top-skill",
+      "router_view": "wave-theory-skill-router/references/capabilities/failure-irregular-top-skill.md"
+    },
+    "cap.elliott-wave.bear-diagnosis-skill": {
+      "promoted_to": "bear-diagnosis-skill",
+      "router_view": "wave-theory-skill-router/references/capabilities/bear-diagnosis-skill.md"
+    },
+    "cap.elliott-wave.multi-timeframe": {
+      "served_by": "wave-theory-skill-router",
+      "card": "wave-theory-skill-router/references/capabilities/multi-timeframe-skill.md"
+    },
+    "cap.elliott-wave.chart-rules-20": {
+      "served_by": "wave-theory-skill-router",
+      "card": "wave-theory-skill-router/references/capabilities/chart-rules-20-skill.md"
+    },
+    "cap.elliott-wave.cross-market-sync": {
+      "served_by": "wave-theory-skill-router",
+      "card": "wave-theory-skill-router/references/capabilities/cross-market-sync-skill.md"
+    },
+    "cap.elliott-wave.non-price-series": {
+      "served_by": "wave-theory-skill-router",
+      "card": "wave-theory-skill-router/references/capabilities/non-price-series-skill.md"
+    },
+    "cap.elliott-wave.applicability-gate-skill": {
+      "promoted_to": "applicability-gate-skill",
+      "router_view": "wave-theory-skill-router/references/capabilities/applicability-gate-skill.md"
+    },
+    "cap.elliott-wave.commentary-playbook": {
+      "served_by": "wave-theory-skill-router",
+      "card": "wave-theory-skill-router/references/capabilities/commentary-playbook-skill.md"
+    }
+  }
+}
